@@ -33,7 +33,7 @@ Do you want to continue?
 */
 
 #include<stdio.h>
-#define max 10
+#define max 4
 
 int queue[max];
 int front =-1,rear=-1;
@@ -77,7 +77,7 @@ void enqueue()
     int d;
     printf("enter element:\n");
     scanf("%d",&d);
-    if((rear+1)%max == front || (rear == max-1 && rear==0))
+    if((rear+1)%max == front || (rear == max-1 && front==0))
     {
         printf("Queue is Full\n");
         return;
@@ -120,7 +120,7 @@ void display()
             printf(" %d",queue[i]);
         }
     }
-    else
+    else if(front>rear)
     {
         for(int i=front;i<max;i++)              //front>rear
         {
@@ -131,5 +131,9 @@ void display()
            }
         }
         
+    }
+    else
+    {
+        printf("Empty\n");
     }
 }
